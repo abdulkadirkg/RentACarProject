@@ -14,6 +14,7 @@ Mercedes-Benz
 Audi
 ---------------------------------------UPDATE
 InMemoryCarDal ile güncellendi
+//Mercedes-Benz -> DEGISEN MARKA ADI
 ------------------------------------------GET
 InMemoryCarDal ile getirildi
 BMW
@@ -21,6 +22,7 @@ DEGISEN MARKA ADI
 Audi
 ---------------------------------------DELETE
 InMemoryCarDal ile silindi
+//DEGISEN MARKA ADI -> SILINDI
 ------------------------------------------GET
 InMemoryCarDal ile getirildi
 BMW
