@@ -35,12 +35,13 @@ namespace DataAccess.Concrete.InMemory
         {
             Console.WriteLine("InMemoryCarDal ile güncellendi");
             Car carToUpdate = _car.SingleOrDefault(c => c.Id == car.Id);
-            carToUpdate.Id = car.Id;
-            carToUpdate.BrandId = car.BrandId;
-            carToUpdate.ColorId = car.ColorId;
-            carToUpdate.DailyPrice = car.DailyPrice;
-            carToUpdate.Description = car.Description;
-            carToUpdate.ModelYear = car.ModelYear;
+            //carToUpdate.Id = car.Id;
+            //carToUpdate.BrandId = car.BrandId;
+            //carToUpdate.ColorId = car.ColorId;
+            //carToUpdate.DailyPrice = car.DailyPrice;
+            //carToUpdate.Description = car.Description;
+            //carToUpdate.ModelYear = car.ModelYear;
+            carToUpdate = car;
         }
         public List<Car> GetById(int id)
         {
