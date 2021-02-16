@@ -40,7 +40,6 @@ namespace ConsoleUI
                 Description = "Audi A7 250 HP",
                 ModelYear = 2020
             };
-            //
             Console.WriteLine("---ADD---------------------------------------");
             carManager.Add(car);
             carManager.Add(car2);
