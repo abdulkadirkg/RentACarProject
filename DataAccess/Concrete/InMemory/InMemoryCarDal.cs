@@ -4,6 +4,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -15,7 +16,6 @@ namespace DataAccess.Concrete.InMemory
         public void Add(Car car)
         {
             Console.WriteLine("InMemoryCarDal ile eklendi ->>" + car.BrandName);
-            car.DBDesc = "In Memory 1'den Eklendi";
             _car.Add(car);
         }
 
@@ -47,6 +47,30 @@ namespace DataAccess.Concrete.InMemory
         {
             Console.WriteLine("InMemoryCarDal ile ID'ye göre getirildi");
             return _car.Where(c => c.Id == id).ToList();
+        }
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            return _car;
+        }
+
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteAll<T>()
+        {
+            throw new NotImplementedException();
         }
     }
 }

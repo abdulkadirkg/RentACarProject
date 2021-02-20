@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using DataAccess.Concrete.InMemory2;
 using Entities.Concrete;
@@ -10,33 +11,31 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            
+            CarManager carManager = new CarManager(new EfCarDal());
             Car car = new Car {
-                Id = 1,
                 BrandId = 1,
                 BrandName = "BMW",
                 ColorId = 3,
-                DailyPrice = 45.000,
+                DailyPrice = 0,
                 Description = "BMW 7.40 LD Long Kasa",
                 ModelYear = 2021
             };
             Car car2 = new Car
             {
-                Id = 2,
                 BrandId = 2,
                 ColorId = 2,
                 BrandName = "Mercedes-Benz",
-                DailyPrice = 65.000,
+                DailyPrice = 65000,
                 Description = "Mercedes-Benz C200d Diesel 150 HP",
                 ModelYear = 2021
             };
             Car car3 = new Car
             {
-                Id = 3,
                 BrandId = 2,
                 ColorId = 5,
                 BrandName = "Audi",
-                DailyPrice = 55.000,
+                DailyPrice = 55000,
                 Description = "Audi A7 250 HP",
                 ModelYear = 2020
             };
@@ -66,8 +65,16 @@ namespace ConsoleUI
                 Console.WriteLine(c.BrandName);
             }
             Console.WriteLine("---GETBYID-----------------------------------");
-            var get = carManager.GetById(1)[0];
-            Console.WriteLine(get.BrandName);
+            //var get = carManager.GetById(22);
+            //Console.WriteLine(get.BrandName);
+            Console.WriteLine("---GETBYCOLORID------------------------------");
+            var getCar = carManager.GetByBrandId(22);
+            foreach (var c in getCar)
+            {
+                Console.WriteLine(c.BrandName + c.BrandId + "<->" + c.DailyPrice);
+            }
+
+            carManager.DeleteAll<Car>();
         }
     }
 }
