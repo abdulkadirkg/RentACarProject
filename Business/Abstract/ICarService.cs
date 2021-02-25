@@ -1,5 +1,6 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace Business.Abstract
         List<Car> GetByBrandId(int id);
         List<Car> GetByColorId(int id);
         void DeleteAll<Car>();
+        List<CarDetailDTO> GetCarDetails();
     }
 }

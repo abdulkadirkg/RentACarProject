@@ -1,11 +1,12 @@
 ﻿using DataAccess.Abstract;
-using Entities.Abstract;
+using Core.Entities;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -69,6 +70,11 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
         public void DeleteAll<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDTO> GetCarDetails()
         {
             throw new NotImplementedException();
         }

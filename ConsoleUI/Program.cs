@@ -23,7 +23,7 @@ namespace ConsoleUI
             };
             Car car2 = new Car
             {
-                BrandId = 2,
+                BrandId = 3,
                 ColorId = 2,
                 BrandName = "Mercedes-Benz",
                 DailyPrice = 65000,
@@ -58,7 +58,7 @@ namespace ConsoleUI
                 Console.WriteLine(c.BrandName);
             }
             Console.WriteLine("---DELETE------------------------------------");
-            carManager.Delete(car2);
+            //carManager.Delete(car2);
             Console.WriteLine("---GET---------------------------------------");
             foreach (var c in carManager.GetAll())
             {
@@ -74,7 +74,14 @@ namespace ConsoleUI
                 Console.WriteLine(c.BrandName + c.BrandId + "<->" + c.DailyPrice);
             }
 
-            carManager.DeleteAll<Car>();
+            //carManager.DeleteAll<Car>();
+
+            var details = carManager.GetCarDetails();
+            foreach (var detail in details)
+            {
+                Console.WriteLine(detail.BrandName + " - " + detail.CarName + " - " + detail.ColorName);
+            }
+
         }
     }
 }
