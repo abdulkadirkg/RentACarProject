@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Entities.DTOs;
+using Core.Utilities.Results;
+using Business.Constants;
 
 namespace Business.Concrete
 {
@@ -16,19 +18,22 @@ namespace Business.Concrete
         {
             _iCarDal = iCarDal;
         }
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             _iCarDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _iCarDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
-        public void DeleteAll<Car>()
+        public IResult DeleteAll()
         {
-            _iCarDal.DeleteAll<Car>();
+            _iCarDal.DeleteAll();
+            return new SuccessResult(Messages.CarDeleted);
         }
 
         //public void DeleteAll<Car>()
@@ -36,34 +41,36 @@ namespace Business.Concrete
         //    _iCarDal.DeleteAll<Car>;
         //}
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _iCarDal.GetAll();
+            //return _iCarDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_iCarDal.GetAll());
         }
 
-        public List<Car> GetByBrandId(int id)
+        public IDataResult<List<Car>> GetByBrandId(int id)
         {
-            return _iCarDal.GetCarsByBrandId(id);
+            return new SuccessDataResult<List<Car>>(_iCarDal.GetCarsByBrandId(id));
         }
 
-        public List<Car> GetByColorId(int id)
+        public IDataResult<List<Car>> GetByColorId(int id)
         {
-            return _iCarDal.GetCarsByColorId(id);
+            return new SuccessDataResult<List<Car>>(_iCarDal.GetCarsByColorId(id));
         }
 
-        public List<Car> GetById(int id)
+        public IDataResult<List<Car>> GetById(int id)
         {
-            return _iCarDal.GetAll(p => p.Id == id);
+            return new SuccessDataResult<List<Car>>(_iCarDal.GetAll(p => p.Id == id));
         }
 
-        public List<CarDetailDTO> GetCarDetails()
+        public IDataResult<List<CarDetailDTO>> GetCarDetails()
         {
-            return _iCarDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDTO>>(_iCarDal.GetCarDetails());
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _iCarDal.Update(car);
+            return new SuccessResult("Güncelleme başarılı!");
         }
     }
 }

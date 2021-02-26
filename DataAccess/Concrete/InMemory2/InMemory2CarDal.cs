@@ -81,5 +81,10 @@ namespace DataAccess.Concrete.InMemory2
         {
             throw new NotImplementedException();
         }
+
+        public void DeleteAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

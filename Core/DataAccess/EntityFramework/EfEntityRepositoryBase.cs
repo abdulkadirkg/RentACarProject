@@ -45,7 +45,7 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public void DeleteAll<Car>()
+        public void DeleteAll()
         {
             using (TContext context = new TContext())
             {

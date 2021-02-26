@@ -45,7 +45,7 @@ namespace ConsoleUI
             carManager.Add(car2);
             carManager.Add(car3);
             Console.WriteLine("---GET---------------------------------------");
-            foreach (var c in carManager.GetAll())
+            foreach (var c in carManager.GetAll().Data)
             {
                 Console.WriteLine(c.BrandName);
             }
@@ -53,14 +53,14 @@ namespace ConsoleUI
             car2.BrandName = "DEGISEN MARKA ADI";
             carManager.Update(car2);
             Console.WriteLine("---GET---------------------------------------");
-            foreach (var c in carManager.GetAll())
+            foreach (var c in carManager.GetAll().Data)
             {
                 Console.WriteLine(c.BrandName);
             }
             Console.WriteLine("---DELETE------------------------------------");
             //carManager.Delete(car2);
             Console.WriteLine("---GET---------------------------------------");
-            foreach (var c in carManager.GetAll())
+            foreach (var c in carManager.GetAll().Data)
             {
                 Console.WriteLine(c.BrandName);
             }
@@ -68,15 +68,15 @@ namespace ConsoleUI
             //var get = carManager.GetById(22);
             //Console.WriteLine(get.BrandName);
             Console.WriteLine("---GETBYCOLORID------------------------------");
-            var getCar = carManager.GetByBrandId(22);
+            var getCar = carManager.GetByBrandId(22).Data;
             foreach (var c in getCar)
             {
                 Console.WriteLine(c.BrandName + c.BrandId + "<->" + c.DailyPrice);
             }
 
-            //carManager.DeleteAll<Car>();
+            //carManager.DeleteAll();
 
-            var details = carManager.GetCarDetails();
+            var details = carManager.GetCarDetails().Data;
             foreach (var detail in details)
             {
                 Console.WriteLine(detail.BrandName + " - " + detail.CarName + " - " + detail.ColorName);
