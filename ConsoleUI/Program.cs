@@ -11,9 +11,32 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            
+            //ProgramCS();
+            UserManager userManager = new UserManager(new EfUserDal());
+            User user = new User() { 
+                FirstName = "Abdulkadir",
+                LastName = "KG",
+                Email = "abdulkadir@abdulkadir.com",
+                Password = "123456"
+            };
+            userManager.Add(user);
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Rental rental = new Rental() { 
+                CarId = 2,
+                CustomerId = 1,
+                RentDate = DateTime.Now
+            };
+            rentalManager.Add(rental);
+
+
+        }
+
+        private static void ProgramCS()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
-            Car car = new Car {
+            Car car = new Car
+            {
                 BrandId = 1,
                 BrandName = "BMW",
                 ColorId = 3,
@@ -81,7 +104,6 @@ namespace ConsoleUI
             {
                 Console.WriteLine(detail.BrandName + " - " + detail.CarName + " - " + detail.ColorName);
             }
-
         }
     }
 }
