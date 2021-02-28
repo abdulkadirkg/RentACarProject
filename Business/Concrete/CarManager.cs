@@ -44,7 +44,12 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetAll()
         {
             //return _iCarDal.GetAll();
-            return new SuccessDataResult<List<Car>>(_iCarDal.GetAll());
+
+            if (DateTime.Now.Hour == 18)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+            }
+            return new SuccessDataResult<List<Car>>(_iCarDal.GetAll(),"Araçlar Listelendi");
         }
 
         public IDataResult<List<Car>> GetByBrandId(int id)
